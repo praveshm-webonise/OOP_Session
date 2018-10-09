@@ -11,9 +11,9 @@ public class Apple extends Ios{
 
 	public void setnewfeature() {
 		
-		this.bname = "Nokia 6";
+		this.bname = "Iphone 6";
 		this.color = "Silver";
-		this.weight = 150;
+		this.weight = 120;
 		this.size = 6;
 		this.applepay = "Apple Pay is available";
 	}
