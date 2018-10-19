@@ -1,15 +1,14 @@
 import java.util.*;
 
-public class Android extends Cellphone{
+public class Android extends Mobile {
 
-	
-	public String version;
-	
-	
-	
-	
+	private String version;
+	private String mobile_number;
+
+	Scanner scan = new Scanner(System.in);
+
 	public void setfeature() {
-	
+
 		this.os_type = "Android Orio";
 		this.version = "1.8.0";
 		this.camera = 20;
@@ -19,7 +18,7 @@ public class Android extends Cellphone{
 		this.battery = 4100;
 		this.simtype = "Dual Sim";
 	}
-	
+
 	public void showfeature() {
 		System.out.println("OS type ::" + os_type);
 		System.out.println("Version ::" + version);
@@ -29,59 +28,72 @@ public class Android extends Cellphone{
 		System.out.println("Display ::" + display);
 		System.out.println("Battery ::" + battery + "mAh");
 	}
-	
-	public void androidbrand() {
-	int ch;
-	char a;
-	
-	Scanner sc = new Scanner(System.in);
-	
-	do {
-		
-	System.out.println("List of Android Phone");
-	System.out.println("1.Nokia");
-	System.out.println("2.Samsung");
-	System.out.println("3.MI");
 
-	System.out.println("Please Enter your choice ::");
-	ch = sc.nextInt();
-	
-	switch(ch) {
-	
-	
-	case 1	:	Nokia nk = new Nokia();
-				nk.setfeature();
-				nk.showfeature();
+	public void androidbrand() {
+		int choice;
+		char input;
+
+		do {
+
+			System.out.println("List of Android Phone");
+			System.out.println("1.Nokia");
+			System.out.println("2.Samsung");
+			System.out.println("3.MI");
+
+			System.out.println("Please Enter your choice ::");
+			choice = scan.nextInt();
+
+			switch (choice) {
+
+			case 1:
+				Nokia nokia = new Nokia();
+				nokia.setfeature();
+				nokia.showfeature();
 				System.out.println("..........................");
-				nk.setnewfeature();
-				nk.shownewfeature();
+				nokia.setnewfeature();
+				nokia.shownewfeature();
 				break;
-	case 2	:	Samsung sm = new Samsung();
-				sm.setfeature();
-				sm.showfeature();
+			case 2:
+				Samsung samsung = new Samsung();
+				samsung.setfeature();
+				samsung.showfeature();
 				System.out.println("..........................");
-				sm.setnewfeature();
-				sm.shownewfeature();
+				samsung.setnewfeature();
+				samsung.shownewfeature();
 				break;
-	case 3	:	MI mi = new MI();
+			case 3:
+				MI mi = new MI();
 				mi.setfeature();
 				mi.showfeature();
 				System.out.println("..........................");
 				mi.setnewfeature();
 				mi.shownewfeature();
 				break;
-	
-	default		:	System.out.println("Invalid choice");
-	
+
+			default:
+				System.out.println("Invalid choice");
+
+			}
+
+			System.out.println("Do you want to continue..(Y/N) ::");
+			input = scan.next().charAt(0);
+		} while (input != 'N');
 	}
-	
-	System.out.println("Do you want to continue..(Y/N) ::");
-	a=sc.next().charAt(0);
-	}while(a!='N');
+
+	@Override
+	public void makecall() {
+
+		System.out.println("Enter the mobile number:");
+		mobile_number = scan.next();
+		System.out.println("You are calling to...." + mobile_number);
+	}
+
+	@Override
+	public void sendsms() {
+		System.out.println("Enter the mobile number:");
+		mobile_number = scan.next();
+		System.out.println("You are messaging to...." + mobile_number);
+
+	}
+
 }
-
-}	
-
-	
-	
-

@@ -1,15 +1,14 @@
 import java.util.Scanner;
 
-public class Ios extends Cellphone{
-	
-public String version;
-public String bluetooth;
-	
-	
-	
-	
+public class Ios extends Mobile {
+
+	private String version;
+	private String bluetooth;
+	private String mobile_number;
+	Scanner scan = new Scanner(System.in);
+
 	public void setfeature() {
-	
+
 		this.os_type = "IOS";
 		this.version = "10";
 		this.camera = 20;
@@ -20,7 +19,7 @@ public String bluetooth;
 		this.simtype = "Single Sim";
 		this.bluetooth = "Not available";
 	}
-	
+
 	public void showfeature() {
 		System.out.println("OS type ::" + os_type);
 		System.out.println("Version ::" + version);
@@ -32,42 +31,54 @@ public String bluetooth;
 		System.out.println("Bluetooth ::" + bluetooth);
 
 	}
-	
+
 	public void ibrand() {
-		int ch;
-		char a;
-		
-		Scanner sc = new Scanner(System.in);
-		
+		int choice;
+		char input;
+
 		do {
-			
-		System.out.println("List of Android Phone");
-		System.out.println("1.Apple");
-		
-	
 
-		System.out.println("Please Enter your choice ::");
-		ch = sc.nextInt();
-		
-		switch(ch) {
-		
-		
-		case 1	:	Apple ap = new Apple();
-					ap.setfeature();
-					ap.showfeature();
-					System.out.println("..........................");
-					ap.setnewfeature();
-					ap.shownewfeature();
-					break;
+			System.out.println("List of Android Phone");
+			System.out.println("1.Apple");
 
-		
-		default		:	System.out.println("Invalid choice");
-		
-		}
-		
-		System.out.println("Do you want to continue..(Y/N) ::");
-		a=sc.next().charAt(0);
-		}while(a!='N');
+			System.out.println("Please Enter your choice ::");
+			choice = scan.nextInt();
+
+			switch (choice) {
+
+			case 1:
+				Apple apple = new Apple();
+				apple.setfeature();
+				apple.showfeature();
+				System.out.println("..........................");
+				apple.setnewfeature();
+				apple.shownewfeature();
+				break;
+
+			default:
+				System.out.println("Invalid choice");
+
+			}
+
+			System.out.println("Do you want to continue..(Y/N) ::");
+			input = scan.next().charAt(0);
+		} while (input != 'N');
+	}
+
+	@Override
+	public void makecall() {
+
+		System.out.println("Enter the mobile number:");
+		mobile_number = scan.next();
+		System.out.println("You are calling to...." + mobile_number);
+	}
+
+	@Override
+	public void sendsms() {
+		System.out.println("Enter the mobile number:");
+		mobile_number = scan.next();
+		System.out.println("You are messaging to...." + mobile_number);
+
 	}
 
 }
